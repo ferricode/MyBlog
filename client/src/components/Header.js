@@ -4,7 +4,9 @@ export const Header = () => {
             <div className="overlay"></div>
             <div className="header-content">
                 <h1 className="header-title">Всичко е движение.</h1>
-                <p className="header-subtitle">Тук можете да откриете мои снимки на неща, които са ме развълнивали както и мои писания. Оставям и видео, което отразява настоящото ми настроение :) Приятно разхождане из моя свят.</p>
+                <p className="header-subtitle">Здравей <i className="ti-heart text-danger"></i>
+                    <br />Намираш се в моето лично дигитално пространство. Тук ще намериш любими снимки и писания от мен. Оставям и музикално видео за настроение <i className="ti-music text-danger"></i><i className="ti-headphone text-danger"></i>
+                    <br />Приятно разхождане.</p>
                 <button className="btn btn-theme-color modal-toggle"><i className="ti-control-play text-danger"></i> Watch
                     Video</button>
             </div>

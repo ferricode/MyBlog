@@ -1,4 +1,4 @@
-export const ThemePainting = () => {
+export const ThemeSelector = () => {
     return (
         <div className="theme-selector">
             <a href="#" className="spinner">

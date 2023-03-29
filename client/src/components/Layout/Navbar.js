@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 export const Navbar = () => {
     return (
         <nav className="page-navbar" data-spy="affix" data-offset-top="10" >
             <ul className="nav-navbar container">
-                <li className="nav-item"><a href="/" className="nav-link">Начало</a></li>
-                <li className="nav-item"><a href="/photos" className="nav-link">Снимки</a></li>
-                <li className="nav-item"><a href="/location" className="nav-link"><img src="public_html/assets/imgs/placeholder.svg"
-                    alt="Download free bootstrap ..." /></a>
+                <li className="nav-item"><Link to="/" className="nav-link">Начало</Link></li>
+                <li className="nav-item"><Link to="/photos" className="nav-link">Снимки</Link></li>
+                <li className="nav-item"><Link to="/location" className="nav-link"><img src="public_html/assets/imgs/placeholder.svg"
+                    alt="Download free bootstrap ..." /></Link >
                 </li>
                 <li className="nav-item"><a href="/diary" className="nav-link">Писания</a></li>
                 <li className="nav-item search">

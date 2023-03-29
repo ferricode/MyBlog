@@ -1,15 +1,17 @@
+import { Routes } from 'react-router-dom';
+
 import { Navbar } from '../src/components/Navbar';
-import { ThemePainting } from '../src/components/ThemePainting';
+import { ThemePainting } from './components/ThemeSelector';
 import { Header } from '../src/components/Header';
 import { Modalbox } from './components/Modalbox';
 import { Photos } from './components/Photos';
 import { Diary } from './components/Diary';
-import { Email } from './components/Email';
+import { Contacts } from './components/Contacts';
 import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
       <ThemePainting />
       <Header />
@@ -18,23 +20,14 @@ function App() {
         <Photos />
         <Diary />
       </div >
-      {/* <!-- end of page container --> */};
-
-      {/* <!--footer & pre footer --> */}
       <div className="contact-section">
         <div className="overlay"></div>
-        {/* <!-- container --> */}
         <div className="container">
-          <Email />
-          {/* <!-- footer --> */}
+          <Contacts />
           <Footer />
-          {/* <!-- end of footer --> */}
-
         </div>
-        {/* <!-- end of container --> */}
       </div>;
-      {/* <!-- end of pre footer --> */}
-    </div >
+    </>
 
   );
 }

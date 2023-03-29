@@ -1,4 +1,4 @@
-export const Email = () => {
+export const Contacts = () => {
     return (
         <div className="col-md-10 col-lg-8 m-auto">
             <h6 className="title mb-2">Бял лист за теб:</h6>

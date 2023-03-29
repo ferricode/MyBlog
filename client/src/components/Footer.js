@@ -1,8 +1,10 @@
 export const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="footer">
             <p className="infos">&copy;
-                <script>document.write(new Date().getFullYear())</script>, Made with <i
+                <span>{currentYear}</span>, Made with <i
                     className="ti-heart text-danger"></i> by <a href="http://www.devcrud.com">DevCRUD</a>
             </p>
             <span>|</span>

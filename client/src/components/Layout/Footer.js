@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -9,9 +11,9 @@ export const Footer = () => {
             </p>
             <span>|</span>
             <div className="links">
-                <a href="/">Начало</a>
-                <a href="/photos">Снимки</a>
-                <a href="/diary">Писания</a>
+                <Link to="/">Начало</Link>
+                <Link to="/photos">Снимки</Link>
+                <Link to="/diary">Писания</Link>
             </div>
         </footer>
     );

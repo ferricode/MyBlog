@@ -1,11 +1,11 @@
-import { Photos } from './Photos';
-import { Diary } from './Diary';
+import { PhotosPreview } from './PhotosPreview';
+import { PostsPreview } from './PostsPreview';
 
 export const Home = () => {
     return (
         <div className="container page-container">
-            <Photos />
-            <Diary />
+            <PhotosPreview />
+            <PostsPreview />
         </div >
     );
 };

@@ -1,4 +1,4 @@
-export const Diary = () => {
+export const PostsPreview = () => {
     return (
         <div>
             <div className="col-md-10 col-lg-8 m-auto">

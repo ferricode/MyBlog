@@ -15,7 +15,6 @@ export const Layout = () => {
             <Header />
             <Modalbox />
             <Link to='/'></Link>
-            <Link to='about'></Link>
             <Outlet />
             <div className="contact-section">
                 <div className="overlay"></div>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const PostsPreview = () => {
     return (
         <div>
@@ -39,7 +41,7 @@ export const PostsPreview = () => {
             </div>;
             {/* <!-- end of row --> */}
 
-            <a href="#">Виж още... <i className="ti-angle-double-right angle"></i></a>
+            <Link to="/posts">Виж още... <i className="ti-angle-double-right angle"></i></Link>
         </div>
 
     );

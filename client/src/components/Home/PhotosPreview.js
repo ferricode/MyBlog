@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const PhotosPreview = () => {
     return (
         <div>
@@ -47,7 +49,7 @@ export const PhotosPreview = () => {
                     </a>
                 </div>
             </div>
-            <a href="#">Виж още... <i className="ti-angle-double-right angle"></i></a>
+            <Link to="/photos">Виж още... <i className="ti-angle-double-right angle"></i></Link>
         </div>
     );
 };;

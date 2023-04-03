@@ -7,13 +7,13 @@ export const Footer = () => {
         <footer className="footer">
             <p className="infos">&copy;
                 <span>{currentYear}</span>, Made with <i
-                    className="ti-heart text-danger"></i> by <a href="http://www.devcrud.com">DevCRUD</a>
+                    className="ti-heart text-danger"></i> by <Link to="http://www.devcrud.com">DevCRUD</Link>
             </p>
             <span>|</span>
             <div className="links">
                 <Link to="/">Начало</Link>
                 <Link to="/photos">Снимки</Link>
-                <Link to="/diary">Писания</Link>
+                <Link to="/posts">Писания</Link>
             </div>
         </footer>
     );

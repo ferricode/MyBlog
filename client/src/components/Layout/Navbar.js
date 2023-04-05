@@ -16,10 +16,6 @@ export const Navbar = () => {
                 <li className="nav-item"><Link to="/location" className="nav-link"><img src="public_html/assets/imgs/placeholder.svg"
                     alt="Location" /></Link >
                 </li>
-                {!isAuthenticated && (<li className="nav-item"><Link to="/login" className="nav-link">Вписване</Link></li>)}
-                {!isAuthenticated && (<li className="nav-item"><Link to="/register" className="nav-link">Регистрация</Link></li>)}
-                {isAuthenticated && userName && (<li className="nav-item nav-link">{userName}||{userEmail}</li>)}
-                {isAuthenticated && (<li className="nav-item"><Link to="/logout" className="nav-link">Отписване</Link></li>)}
                 <li className="nav-item search">
                     <Link to="/search" className="nav-link search-toggle"><i className="ti-search"></i> Търси</Link>
                     <div className="search-wrapper">
@@ -28,6 +24,12 @@ export const Navbar = () => {
                         </form>
                     </div>
                 </li>
+                {!isAuthenticated && (<li className="nav-item"><Link to="/login" className="nav-link">Вписване</Link></li>)}
+                {!isAuthenticated && (<li className="nav-item"><Link to="/register" className="nav-link">Регистрация</Link></li>)}
+                {(isAuthenticated && userName) ? (<li className="nav-item nav-link">Hello {userName}</li>) :
+                    (<li className="nav-item nav-link">{userEmail}</li>)}
+                {isAuthenticated && (<li className="nav-item"><Link to="/logout" className="nav-link">Отписване</Link></li>)}
+
             </ul>
         </nav >
     );

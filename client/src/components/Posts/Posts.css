@@ -1,0 +1,35 @@
+.post-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.post-item {
+    width: 31.333333%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-right: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.post-title {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.post-content {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.no-articles {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Agency FB";
+}

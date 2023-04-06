@@ -1,4 +1,4 @@
-export const request = async (method, url, data) => {
+export const requester = async (method, url, data) => {
     const options = {};
 
     if (method !== 'GET') {
@@ -13,17 +13,17 @@ export const request = async (method, url, data) => {
         }
     }
 
-    // const serializedAuth = localStorage.getItem('auth');
-    // if (serializedAuth) {
-    //     const auth = JSON.parse(serializedAuth);
+    const serializedAuth = localStorage.getItem('auth');
+    if (serializedAuth) {
+        const auth = JSON.parse(serializedAuth);
 
-    //     if (auth.accessToken) {
-    //         options.headers = {
-    //             ...options.headers,
-    //             'X-Authorization': auth.accessToken,
-    //         };
-    //     }
-    // }
+        if (auth.accessToken) {
+            options.headers = {
+                ...options.headers,
+                'X-Authorization': auth.accessToken,
+            };
+        }
+    }
 
     const response = await fetch(url, options);
 
@@ -39,7 +39,12 @@ export const request = async (method, url, data) => {
 
     return result;
 };
-export const get = request.bind(null, 'GET');
-export const post = request.bind(null, 'POST');
-export const put = request.bind(null, 'PUT');
-export const del = request.bind(null, 'DELETE');
+export const requestFactory = () => {
+    return {
+        get: requester.bind(null, 'GET'),
+        post: requester.bind(null, 'POST'),
+        put: requester.bind(null, 'PUT'),
+        patch: requester.bind(null, 'PATCH'),
+        delete: requester.bind(null, 'DELETE'),
+    };
+};

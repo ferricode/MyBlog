@@ -9,7 +9,7 @@ export const postServiceFactory = (token) => {
     const getAll = async () => {
         const result = await request.get(baseUrl);
         const posts = Object.values(result);
-
+        console.log(baseUrl);
         return posts;
     };
 

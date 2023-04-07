@@ -26,7 +26,7 @@ export const Navbar = () => {
                 </li>
                 {!isAuthenticated && (<li className="nav-item"><Link to="/login" className="nav-link">Вписване</Link></li>)}
                 {!isAuthenticated && (<li className="nav-item"><Link to="/register" className="nav-link">Регистрация</Link></li>)}
-                {(isAuthenticated && userName) ? (<li className="nav-item nav-link">Hello {userName}</li>) :
+                {(isAuthenticated && userName) ? (<li className="nav-item nav-link">Здравей, {userName}</li>) :
                     (<li className="nav-item nav-link">{userEmail}</li>)}
                 {isAuthenticated && (<li className="nav-item"><Link to="/logout" className="nav-link">Отписване</Link></li>)}
 

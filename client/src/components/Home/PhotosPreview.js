@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 
 export const PhotosPreview = () => {
@@ -10,15 +11,15 @@ export const PhotosPreview = () => {
 
             <div className="row mb-4">
                 <div className="col-md-4">
-                    <a href="#" className="overlay-img">
+                    <a href={void (0)} className="overlay-img">
                         <img src="public_html/assets/imgs/img-1.jpg"
                             alt="Download ..." />
                         <div className="overlay"></div>
                         <div className="des">
-                            <h1 className="title">Excepteur sint</h1>
-                            <h6 className="subtitle">magna aliqua</h6>
+                            <h1 className="title">Пътят</h1>
+                            {/* <h6 className="subtitle">magna aliqua</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                tempor incididunt ut labore et dolore magna aliqua.</p> */}
                         </div>
                     </a>
                 </div>
@@ -28,10 +29,10 @@ export const PhotosPreview = () => {
                             alt="Download ..." />
                         <div className="overlay"></div>
                         <div className="des">
-                            <h1 className="title">Nostrud exercitation </h1>
-                            <h6 className="subtitle">nulla pariatur</h6>
+                            <h1 className="title">Залез</h1>
+                            {/* <h6 className="subtitle">nulla pariatur</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                tempor incididunt ut labore et dolore magna aliqua.</p> */}
                         </div>
                     </a>
                 </div>
@@ -41,10 +42,10 @@ export const PhotosPreview = () => {
                             alt="Downloa..." />
                         <div className="overlay"></div>
                         <div className="des">
-                            <h1 className="title">Excepteur sint</h1>
-                            <h6 className="subtitle">magna aliqua</h6>
+                            <h1 className="title">Кападокя</h1>
+                            {/* <h6 className="subtitle">magna aliqua</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                                tempor incididunt ut labore et dolore magna aliqua.</p> */}
                         </div>
                     </a>
                 </div>

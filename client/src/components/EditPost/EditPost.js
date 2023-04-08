@@ -59,7 +59,6 @@ export const EditPost = () => {
                     placeholder="Съдържание:"
                     value={values.content}
                     onChange={changeHandler}
-                    //onChange={(e) => { changeHandler(e); changeHandlerSize(e); }}
                     onFocus={changeHandlerSize}
                     ref={textRef}
                 >

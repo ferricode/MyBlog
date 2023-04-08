@@ -7,6 +7,7 @@ import { Login } from './components/Login/Login';
 import { Logout } from './components/Logout/Logout';
 import { Posts } from './components/Posts/Posts';
 import { CreatePost } from './components/CreatePost/CreatePost';
+import { EditPost } from './components/EditPost/EditPost';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
@@ -24,7 +25,8 @@ function App() {
             <Route path='logout' element={<Logout />} />
             <Route path='photos' element={<Home />} />
             <Route path='posts' element={<Posts />} />
-            <Route path='posts/create' element={<CreatePost />} />
+            <Route path='create-post' element={<CreatePost />} />
+            <Route path='posts/:postId/edit' element={<EditPost />} />
           </Route >
         </Routes>
       </PostProvider>

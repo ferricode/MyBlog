@@ -58,8 +58,9 @@ export const EditPost = () => {
                     className="form-control"
                     placeholder="Съдържание:"
                     value={values.content}
-                    // onChange={changeHandler}
-                    onChange={(e) => { changeHandler(e); changeHandlerSize(e); }}
+                    onChange={changeHandler}
+                    //onChange={(e) => { changeHandler(e); changeHandlerSize(e); }}
+                    onFocus={changeHandlerSize}
                     ref={textRef}
                 >
                 </textarea>

@@ -48,11 +48,11 @@ export const AuthProvider = ({
             console.log('Register Error');
         }
     };
-
     const onLogout = async () => {
         await authService.logout();
-
         setAuth({});
+        localStorage.clear();
+
     };
     const contextValues = {
         onLoginSubmit,

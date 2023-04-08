@@ -30,6 +30,8 @@ export const PostProvider = ({
         const result = await postService.edit(data._id, data);
 
         setPosts(state => state.map(x => x._id === data._id ? result : x));
+
+        navigate('/posts');
     };
 
     const deletePost = (postId) => {

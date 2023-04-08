@@ -23,7 +23,7 @@ export const PostItem = ({
     const onDeleteClick = async () => {
 
         // eslint-disable-next-line no-restricted-globals
-        const result = confirm(`Сигурни ли сте,ч е искате да изтриете '${title}'`);
+        const result = confirm(`Сигурни ли сте, че искате да изтриете '${title}'`);
 
         if (result) {
             await service.delete(_id);
@@ -47,7 +47,7 @@ export const PostItem = ({
                 <h2 className="card-title">{title}</h2>
                 <p className="post-content">{content}</p>
                 <Link to={`/posts/${_id}`} className="card-link">
-                    Read More
+                    Още...
                 </Link>
             </div>
         </div>

@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { usePostContext } from "../../contexts/PostContext";
 
 export const PostsPreview = () => {
+    const { posts } = usePostContext();
+
     return (
+
         <div>
             <div className="col-md-10 col-lg-8 m-auto">
                 <h6 className="title mb-4 mt-5 pt-5">Мое мило дневниче...</h6>
@@ -10,36 +14,22 @@ export const PostsPreview = () => {
                     <br />Тук ще поместя малка част от тези бели и не толкова "бели" листи от моето пътуване.
                 </p>
             </div>
-
-
             <div className="row mb-5">
-                <div className="col-md-6">
-                    <a href="#" className="card">
-                        <img src="public_html/assets/imgs/blog-1.jpg" className="card-img"
-                            alt="Downloa..." />
-                        <div className="card-body">
-                            <h6 className="card-subtitle">30 June, 2018</h6>
-                            <h3 className="card-title">Eiusmod
-                                tempor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </a>
-                </div>
-                <div className="col-md-6">
-                    <a href="#" className="card">
-                        <img src="public_html/assets/imgs/blog-2.jpg" className="card-img"
-                            alt="Download ..." />
-                        <div className="card-body">
-                            <h6 className="card-subtitle">29 June, 2018</h6>
-                            <h3 className="card-title">Ut minim veniam</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>;
-            {/* <!-- end of row --> */}
+                {posts.slice(1, 3).map(post => (
+                    <div className="col-md-6" key={post._id}>
+                        <span className="card">
+                            <img src="public_html/assets/imgs/img-61RB.jpg" className="card-img"
+                                alt="Downloa..." />
+
+                            <div className="card-body" >
+                                <h3 className="card-title">{post.title}</h3>
+                                <p>{post.content.substring(0, 50) + '...'}</p>
+                            </div>
+
+                        </span>
+                    </div>
+                ))};
+            </div>
 
             <Link to="/posts">Виж още... <i className="ti-angle-double-right angle"></i></Link>
         </div>

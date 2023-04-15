@@ -43,7 +43,8 @@ export const CreatePost = () => {
                     className="form-control"
                     placeholder="Съдържание:"
                     value={values.content}
-                    onChange={(e) => { changeHandler(e); changeHandlerSize(e); }}
+                    onChange={changeHandler}
+                    onFocus={changeHandlerSize}
                     ref={textRef}
                 >
                 </textarea>
@@ -52,6 +53,3 @@ export const CreatePost = () => {
         </div >
     );
 };
-
-{/* <textarea name="comment" id="comment" rows="6" className="form-control"
-placeholder="Място за твоето послание..."></textarea> */}

@@ -18,7 +18,7 @@ export const postServiceFactory = (token) => {
         return result;
     };
     const create = async (data) => {
-        const result = await request.get(baseUrl, data);
+        const result = await request.post(baseUrl, data);
 
         return result;
     };

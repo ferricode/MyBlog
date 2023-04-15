@@ -15,13 +15,13 @@ export const Posts = () => {
             </div>
             <br />
             <div className="row mb-4">
-                {posts?.map(x =>
+                {posts.map(x =>
                     <PostItem key={x._id} {...x} />
                 )}
             </div>
-            {!posts && (
+            {posts.length === 0 && (
                 <h3 className="no-articles">Пише се в момента...</h3>
             )}
         </div >
     );
-};;
+};

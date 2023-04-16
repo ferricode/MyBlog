@@ -1,7 +1,6 @@
-import { useContext } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, Fragment } from 'react';
+import { Link } from "react-router-dom";
 
-import '../Posts.css';
 import { usePostContext } from '../../../contexts/PostContext';
 import { BsTrash, BsPencil } from 'react-icons/bs';
 
@@ -17,19 +16,24 @@ export const PostItem = ({
     const { token } = useContext(AuthContext);
     const { deletePost } = usePostContext();
     const service = postServiceFactory(token);
+    const contentWithBreaks = content.toString().substring(0, 700).split(/\n/).flatMap((line, index) =>
+        index > 0
+            ? [<br key={`br-${index}`} />, <Fragment key={index}>{line}</Fragment>]
+            : [line]
+    );
 
-    const navigate = useNavigate();
 
     const onDeleteClick = async () => {
 
-        // eslint-disable-next-line no-restricted-globals
-        const result = confirm(`Сигурни ли сте, че искате да изтриете '${title}'`);
+        const result = window.confirm(`Сигурни ли сте, че искате да изтриете '${title}'`);
 
         if (result) {
-            await service.delete(_id);
-            deletePost(_id);
-
-            navigate('/posts');
+            try {
+                await service.delete(_id);
+                deletePost(_id);
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
@@ -45,8 +49,8 @@ export const PostItem = ({
                     </Link>
                 </div>
                 <h2 className="card-title">{title}</h2>
-                <p className="post-content">{content}</p>
-                <Link to={`/posts/${_id}`} className="card-link">
+                <p className="post-content">{contentWithBreaks}</p>
+                <Link to={`/posts/${_id}/details`} className="card-link">
                     Още...
                 </Link>
             </div>

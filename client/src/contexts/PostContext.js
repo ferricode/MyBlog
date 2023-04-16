@@ -36,6 +36,7 @@ export const PostProvider = ({
 
     const deletePost = (postId) => {
         setPosts(state => state.filter(post => post._id !== postId));
+        navigate('/posts');
     };
 
     const getPost = (postId) => {

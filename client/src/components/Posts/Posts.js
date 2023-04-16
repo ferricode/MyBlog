@@ -1,7 +1,6 @@
 import { usePostContext } from "../../contexts/PostContext";
 import { Link } from 'react-router-dom';
 import { PostItem } from "./PostItem/PostItem";
-import "./Posts.css";
 
 export const Posts = () => {
     const { posts } = usePostContext();

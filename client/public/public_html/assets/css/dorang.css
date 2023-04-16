@@ -2632,6 +2632,23 @@ textarea.form-control {
   margin-left: 0;
 }
 
+.post-content {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.post-item {
+  width: 31.333333%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-right: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
 .valid-feedback {
   display: none;
   width: 100%;

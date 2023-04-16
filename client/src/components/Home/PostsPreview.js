@@ -14,23 +14,34 @@ export const PostsPreview = () => {
                     <br />Тук ще поместя малка част от тези бели и не толкова "бели" листи от моето пътуване.
                 </p>
             </div>
-            <div className="row mb-5">
-                {posts.slice(1, 3).map(post => (
-                    <div className="col-md-6" key={post._id}>
+            {posts && posts.length > 0 && (
+                <div className="row mb-5">
+                    <div className="col-md-6" key={posts[0]._id}>
                         <span className="card">
-                            <img src="public_html/assets/imgs/img-61RB.jpg" className="card-img"
+                            <img src="/public_html/assets/imgs/img-sea.jpg" className="card-img"
                                 alt="Downloa..." />
 
                             <div className="card-body" >
-                                <h3 className="card-title">{post.title}</h3>
-                                <p>{post.content.substring(0, 150) + '...'}</p>
+                                <h3 className="card-title">{posts[0].title}</h3>
+                                <p>{posts[0].content.substring(0, 150) + '...'}</p>
                             </div>
 
                         </span>
                     </div>
-                ))};
-            </div>
+                    <div className="col-md-6" key={posts[1]._id}>
+                        <span className="card">
+                            <img src="/public_html/assets/imgs/img-newmoon.jpg" className="card-img"
+                                alt="Downloa..." />
 
+                            <div className="card-body" >
+                                <h3 className="card-title">{posts[1].title}</h3>
+                                <p>{posts[1].content.substring(0, 150) + '...'}</p>
+                            </div>
+
+                        </span>
+                    </div>
+                </div>
+            )}
             <Link to="/posts">Виж още... <i className="ti-angle-double-right angle"></i></Link>
         </div>
 

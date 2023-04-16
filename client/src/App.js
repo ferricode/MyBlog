@@ -27,7 +27,7 @@ function App() {
             <Route path='photos' element={<Home />} />
             <Route path='posts' element={<Posts />} />
             <Route path='create-post' element={<CreatePost />} />
-            <Route path='posts/:postId' element={<PostDetails />} />
+            <Route path='posts/:postId/details' element={<PostDetails />} />
             <Route path='posts/:postId/edit' element={<EditPost />} />
           </Route >
         </Routes>

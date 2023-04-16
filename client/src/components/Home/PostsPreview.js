@@ -23,7 +23,7 @@ export const PostsPreview = () => {
 
                             <div className="card-body" >
                                 <h3 className="card-title">{post.title}</h3>
-                                <p>{post.content.substring(0, 50) + '...'}</p>
+                                <p>{post.content.substring(0, 150) + '...'}</p>
                             </div>
 
                         </span>

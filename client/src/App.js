@@ -13,7 +13,7 @@ import { Photos } from './components/Photos/Photos';
 import { CreatePhoto } from './components/CreatePhoto/CreatePhoto';
 import { EditPhoto } from './components/EditPhoto/EditPhoto';
 import { PhotoDetails } from './components/PhotoDetails/PhotoDetails';
-
+import { RouteGuard } from './components/common/RouteGuard';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
@@ -30,15 +30,25 @@ function App() {
               <Route index element={<Home />} />
               <Route path='register' element={<Register />} />
               <Route path='login' element={<Login />} />
-              <Route path='logout' element={<Logout />} />
               <Route path='posts' element={<Posts />} />
-              <Route path='create-post' element={<CreatePost />} />
+
+              <Route element={<RouteGuard />}>
+                <Route path='create-post' element={<CreatePost />} />
+                <Route path='posts/:postId/edit' element={<EditPost />} />
+                <Route path='posts/:photoId/delete' />
+                <Route path='logout' element={<Logout />} />
+              </Route>
+
               <Route path='posts/:postId/details' element={<PostDetails />} />
-              <Route path='posts/:postId/edit' element={<EditPost />} />
               <Route path='photos' element={<Photos />} />
-              <Route path='create-photo' element={<CreatePhoto />} />
+
+              <Route element={<RouteGuard />}>
+                <Route path='photos/:photoId/edit' element={<EditPhoto />} />
+                <Route path='create-photo' element={<CreatePhoto />} />
+                <Route path='photos/:photoId/delete' />
+              </Route>
+
               <Route path='photos/:photoId/details' element={<PhotoDetails />} />
-              <Route path='photos/:photoId/edit' element={<EditPhoto />} />
             </Route >
           </Routes>
         </PhotoProvider>

@@ -9,7 +9,7 @@ import { photoServiceFactory } from '../../services/photoService';
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const PhotoDetails = () => {
-    const { token } = useContext(AuthContext);
+    const { token, userId } = useContext(AuthContext);
     const { photoId } = useParams();
     const service = photoServiceFactory(token);
     const { deletePhoto } = usePhotoContext();
@@ -22,6 +22,8 @@ export const PhotoDetails = () => {
         }).catch(error => console.log(error));
 
     }, [photoId]);
+
+    const isOwner = photo._ownerId === userId;
 
     const onDeleteClick = async () => {
 
@@ -40,12 +42,14 @@ export const PhotoDetails = () => {
     return (
         <>
             <div className="card-icons d-flex justify-content-center">
-                <Link to={`/photos/${photo._id}/edit`} className="card-link me-2">
-                    <BsPencil className="icon-lg" />
-                </Link>
-                <Link to={`/photos/${photo._id}/delete`} className="card-link">
-                    <BsTrash onClick={onDeleteClick} className="icon-lg" />
-                </Link>
+                {isOwner && (<>
+                    <Link to={`/photos/${photo._id}/edit`} className="card-link me-2">
+                        <BsPencil className="icon-lg" />
+                    </Link>
+                    <Link to={`/photos/${photo._id}/delete`} className="card-link">
+                        <BsTrash onClick={onDeleteClick} className="icon-lg" />
+                    </Link>
+                </>)}
             </div>
             <div className="card-body d-flex flex-column justify-content-center align-items-center">
                 <h2 className="card-title text-center title">{photo.title}</h2>

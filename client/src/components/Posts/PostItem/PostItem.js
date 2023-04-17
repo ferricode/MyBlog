@@ -9,11 +9,12 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 export const PostItem = ({
     _id,
+    _ownerId,
     title,
     content,
 }) => {
 
-    const { token } = useContext(AuthContext);
+    const { token, userId } = useContext(AuthContext);
     const { deletePost } = usePostContext();
     const service = postServiceFactory(token);
     const contentWithBreaks = content.toString().substring(0, 700).split(/\n/).flatMap((line, index) =>
@@ -22,6 +23,7 @@ export const PostItem = ({
             : [line]
     );
 
+    const isOwner = _ownerId === userId;
 
     const onDeleteClick = async () => {
 
@@ -41,12 +43,14 @@ export const PostItem = ({
         <div className="card post-item">
             <div className="card-body">
                 <div className="card-icons d-flex justify-content-end">
-                    <Link to={`/posts/${_id}/edit`} className="card-link me-2">
-                        <BsPencil />
-                    </Link>
-                    <Link to={`/posts/${_id}/delete`} className="card-link">
-                        <BsTrash onClick={onDeleteClick} />
-                    </Link>
+                    {isOwner && (<>
+                        <Link to={`/posts/${_id}/edit`} className="card-link me-2">
+                            <BsPencil />
+                        </Link>
+                        <Link to={`/posts/${_id}/delete`} className="card-link">
+                            <BsTrash onClick={onDeleteClick} />
+                        </Link>
+                    </>)}
                 </div>
                 <h2 className="card-title">{title}</h2>
                 <p className="post-content">{contentWithBreaks}</p>

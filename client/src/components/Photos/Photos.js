@@ -19,7 +19,7 @@ export const Photos = () => {
                 )}
             </div>
             {photos.length === 0 && (
-                <h3 className="no-articles">Все още няма качени снимки...</h3>
+                <h6 className="title">Все още няма качени снимки...</h6>
             )}
         </div >
     );

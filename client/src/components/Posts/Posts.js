@@ -19,7 +19,7 @@ export const Posts = () => {
                 )}
             </div>
             {posts.length === 0 && (
-                <h3 className="no-articles">Пише се в момента...</h3>
+                <h6 className="title">Пише се в момента...</h6>
             )}
         </div >
     );

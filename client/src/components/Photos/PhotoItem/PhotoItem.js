@@ -1,4 +1,4 @@
-import { useContext, Fragment } from 'react';
+import { useContext } from 'react';
 import { Link } from "react-router-dom";
 
 import { usePhotoContext } from '../../../contexts/PhotoContext';
@@ -34,18 +34,12 @@ export const PhotoItem = ({
     return (
         <div className="card post-item">
             <div className="card-body">
-                <div className="card-icons d-flex justify-content-end">
-                    <Link to={`/posts/${_id}/edit`} className="card-link me-2">
-                        <BsPencil />
-                    </Link>
-                    <Link to={`/posts/${_id}/delete`} className="card-link">
-                        <BsTrash onClick={onDeleteClick} />
-                    </Link>
-                </div>
                 <h2 className="card-title">{title}</h2>
-                <img src={imageUrl} alt={title} style={{ maxWidth: "300px", maxHeight: "300px" }} />
+                <img src={imageUrl} alt={title} style={{ maxWidth: "500px", maxHeight: "500px" }} />
+                <br />
+                <br />
                 <Link to={`/photos/${_id}/details`} className="card-link">
-                    Още...
+                    Детайли...
                 </Link>
             </div>
         </div>

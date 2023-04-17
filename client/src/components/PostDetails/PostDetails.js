@@ -30,7 +30,7 @@ export const PostDetails = () => {
 
     return (
         <div className="card-body d-flex flex-column justify-content-center align-items-center">
-            <h2 className="card-title text-center">{post.title}</h2>
+            <h2 className="card-title text-center title">{post.title}</h2>
             <p className="post-content text-center">{contentWithBreaks}</p>
             <button className="btn details-btn">Like</button>
         </div>

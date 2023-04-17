@@ -13,24 +13,6 @@ export const PhotoItem = ({
     imageUrl,
 }) => {
 
-    const { token } = useContext(AuthContext);
-    const { deletePhoto } = usePhotoContext();
-    const service = photoServiceFactory(token);
-
-    const onDeleteClick = async () => {
-
-        const result = window.confirm(`Сигурни ли сте, че искате да изтриете '${title}'`);
-
-        if (result) {
-            try {
-                await service.delete(_id);
-                deletePhoto(_id);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    };
-
     return (
         <div className="card post-item">
             <div className="card-body">

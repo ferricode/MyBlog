@@ -26,7 +26,7 @@ export const PhotoProvider = ({
         navigate('/photos');
     };
 
-    const onEditPhototSubmit = async (data) => {
+    const onEditPhotoSubmit = async (data) => {
         const result = await photoService.edit(data._id, data);
 
         setPhotos(state => state.map(x => x._id === data._id ? result : x));
@@ -46,7 +46,7 @@ export const PhotoProvider = ({
     const contextValues = {
         photos,
         onCreatePhotoSubmit,
-        onEditPhototSubmit,
+        onEditPhotoSubmit,
         deletePhoto,
         getPhoto,
     };

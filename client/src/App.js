@@ -11,6 +11,9 @@ import { EditPost } from './components/EditPost/EditPost';
 import { PostDetails } from './components/PostDetails/PostDetails';
 import { Photos } from './components/Photos/Photos';
 import { CreatePhoto } from './components/CreatePhoto/CreatePhoto';
+import { EditPhoto } from './components/EditPhoto/EditPhoto';
+import { PhotoDetails } from './components/PhotoDetails/PhotoDetails';
+
 
 import { AuthProvider } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
@@ -34,6 +37,8 @@ function App() {
               <Route path='posts/:postId/edit' element={<EditPost />} />
               <Route path='photos' element={<Photos />} />
               <Route path='create-photo' element={<CreatePhoto />} />
+              <Route path='photos/:photoId/details' element={<PhotoDetails />} />
+              <Route path='photos/:photoId/edit' element={<EditPhoto />} />
             </Route >
           </Routes>
         </PhotoProvider>

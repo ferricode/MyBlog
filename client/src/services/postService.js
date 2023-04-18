@@ -17,6 +17,7 @@ export const postServiceFactory = (token) => {
         }
     };
 
+
     const getOne = async (postId) => {
         try {
             const result = await request.get(`${baseUrl}/${postId}`);

@@ -7,20 +7,32 @@ export const postServiceFactory = (token) => {
     const request = requestFactory(token);
 
     const getAll = async () => {
-        const result = await request.get(baseUrl);
-        const posts = Object.values(result);
-        return posts;
+        try {
+            const result = await request.get(baseUrl);
+            const posts = Object.values(result);
+            return posts;
+        } catch (error) {
+
+            console.log("Error on getting posts!");
+        }
     };
 
     const getOne = async (postId) => {
-        const result = await request.get(`${baseUrl}/${postId}`);
+        try {
+            const result = await request.get(`${baseUrl}/${postId}`);
 
-        return result;
+            return result;
+        } catch (error) {
+            console.log("Error on getting post!");
+        }
     };
     const create = async (data) => {
-        const result = await request.post(baseUrl, data);
-
-        return result;
+        try {
+            const result = await request.post(baseUrl, data);
+            return result;
+        } catch (error) {
+            console.log("Error on creating post!");
+        }
     };
     const edit = (postId, data) => request.put(`${baseUrl}/${postId}`, data);
 

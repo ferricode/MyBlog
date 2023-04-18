@@ -49,9 +49,13 @@ export const AuthProvider = ({
         }
     };
     const onLogout = async () => {
-        await authService.logout();
-        setAuth({});
-        localStorage.clear();
+        try {
+            await authService.logout();
+            setAuth({});
+            localStorage.clear();
+        } catch (error) {
+            console.log('Logout Error');
+        }
 
     };
     const contextValues = {

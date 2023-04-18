@@ -19,19 +19,29 @@ export const PostProvider = ({
     }, []);
 
     const onCreatePostSubmit = async (data) => {
-        const newPost = await postService.create(data);
+        try {
+            const newPost = await postService.create(data);
 
-        setPosts(state => [...state, newPost]);
+            setPosts(state => [...state, newPost]);
 
-        navigate('/posts');
+            navigate('/posts');
+        } catch (error) {
+            console.log("Error on create post!");
+        }
+
     };
 
     const onEditPostSubmit = async (data) => {
-        const result = await postService.edit(data._id, data);
+        try {
+            const result = await postService.edit(data._id, data);
 
-        setPosts(state => state.map(x => x._id === data._id ? result : x));
+            setPosts(state => state.map(x => x._id === data._id ? result : x));
 
-        navigate('/posts');
+            navigate('/posts');
+        } catch (error) {
+            console.log("Error on edit post!");
+        }
+
     };
 
     const deletePost = (postId) => {

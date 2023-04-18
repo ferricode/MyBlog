@@ -19,19 +19,27 @@ export const PhotoProvider = ({
     }, []);
 
     const onCreatePhotoSubmit = async (data) => {
-        const newPhoto = await photoService.create(data);
+        try {
+            const newPhoto = await photoService.create(data);
 
-        setPhotos(state => [...state, newPhoto]);
+            setPhotos(state => [...state, newPhoto]);
 
-        navigate('/photos');
+            navigate('/photos');
+        } catch (error) {
+            console.log("Error on create photo!");
+        }
     };
 
     const onEditPhotoSubmit = async (data) => {
-        const result = await photoService.edit(data._id, data);
+        try {
+            const result = await photoService.edit(data._id, data);
 
-        setPhotos(state => state.map(x => x._id === data._id ? result : x));
+            setPhotos(state => state.map(x => x._id === data._id ? result : x));
 
-        navigate('/photos');
+            navigate('/photos');
+        } catch (error) {
+            console.log("Error on edit photo!");
+        }
     };
 
     const deletePhoto = (photoId) => {

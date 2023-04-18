@@ -7,20 +7,34 @@ export const photoServiceFactory = (token) => {
     const request = requestFactory(token);
 
     const getAll = async () => {
-        const result = await request.get(baseUrl);
-        const photos = Object.values(result);
-        return photos;
+        try {
+            const result = await request.get(baseUrl);
+            const photos = Object.values(result);
+            return photos;
+        } catch (error) {
+            console.log("Error on get all photos!");
+        }
+
     };
 
     const getOne = async (photoId) => {
-        const result = await request.get(`${baseUrl}/${photoId}`);
+        try {
+            const result = await request.get(`${baseUrl}/${photoId}`);
 
-        return result;
+            return result;
+
+        } catch (error) {
+            console.log("Error on getting photo!");
+        }
     };
     const create = async (data) => {
-        const result = await request.post(baseUrl, data);
+        try {
+            const result = await request.post(baseUrl, data);
 
-        return result;
+            return result;
+        } catch (error) {
+            console.log("Error on creating photo!");
+        }
     };
     const edit = (photoId, data) => request.put(`${baseUrl}/${photoId}`, data);
 

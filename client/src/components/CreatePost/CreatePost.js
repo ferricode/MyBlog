@@ -28,12 +28,16 @@ export const CreatePost = () => {
             const taHeight = textRef.current.scrollHeight;
             textRef.current.style.height = taHeight + "px";
         }
+        validate();
     }, [value]);
 
+    const [isValid, setIsValid] = useState(false);
+
     const validate = () => {
-        const newErrors = validatePost(values); // use the validation function
+        const newErrors = validatePost(values);
         setErrors(newErrors);
-        return Object.values(newErrors).every((error) => error === "");
+        const isValid = Object.values(newErrors).every((error) => error === "");
+        setIsValid(isValid); // update isValid state variable
     };
 
     const onBlurHandler = (event) => {
@@ -67,7 +71,7 @@ export const CreatePost = () => {
                     ref={textRef}
                 ></textarea>
                 {errors.content && <p className="text-danger">{errors.content}</p>}
-                <input type="submit" className="form-control" value="Създай" disabled={Object.values(errors).some((error) => error !== "")} />
+                <input type="submit" className="form-control" value="Създай" disabled={!isValid} />
             </form>
         </div>
     );

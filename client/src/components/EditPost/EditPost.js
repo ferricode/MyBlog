@@ -5,7 +5,7 @@ import { useForm } from '../../hooks/useForm';
 import { postServiceFactory } from '../../services/postService';
 import { usePostContext } from '../../contexts/PostContext';
 import { AuthContext } from "../../contexts/AuthContext";
-
+import { validatePost } from '../../utils/validations';
 
 export const EditPost = () => {
     const { token } = useContext(AuthContext);
@@ -14,6 +14,11 @@ export const EditPost = () => {
     const { postId } = useParams();
 
     const { onEditPostSubmit } = usePostContext();
+
+    const [errors, setErrors] = useState({
+        title: "",
+        content: "",
+    });
 
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         title: '',
@@ -27,6 +32,17 @@ export const EditPost = () => {
     const changeHandlerSize = (e) => {
         setValue(e.target.value);
     };
+
+    const validate = () => {
+        const newErrors = validatePost(values);
+        setErrors(newErrors);
+        return Object.values(newErrors).every((error) => error === "");
+    };
+
+    const onBlurHandler = (event) => {
+        validate();
+    };
+
     useEffect(() => {
         service.getOne(postId)
             .then(result => {
@@ -50,7 +66,9 @@ export const EditPost = () => {
                     placeholder="Заглавие:"
                     value={values.title}
                     onChange={changeHandler}
+                    onBlur={onBlurHandler}
                 />
+                {errors.title && <p className="text-danger">{errors.title}</p>}
                 <textarea
                     row="10"
                     type="text"
@@ -59,11 +77,13 @@ export const EditPost = () => {
                     placeholder="Съдържание:"
                     value={values.content}
                     onChange={changeHandler}
+                    onBlur={onBlurHandler}
                     onFocus={changeHandlerSize}
                     ref={textRef}
                 >
                 </textarea>
-                <input type="submit" className="form-control" value="Редактирай" />
+                {errors.content && <p className="text-danger">{errors.content}</p>}
+                <input type="submit" className="form-control" value="Редактирай" disabled={Object.values(errors).some((error) => error !== "")} />
             </form>
         </div >
     );

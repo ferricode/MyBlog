@@ -35,7 +35,6 @@ function App() {
               <Route element={<RouteGuard />}>
                 <Route path='create-post' element={<CreatePost />} />
                 <Route path='posts/:postId/edit' element={<EditPost />} />
-                <Route path='posts/:photoId/delete' />
                 <Route path='logout' element={<Logout />} />
               </Route>
 
@@ -45,7 +44,6 @@ function App() {
               <Route element={<RouteGuard />}>
                 <Route path='photos/:photoId/edit' element={<EditPhoto />} />
                 <Route path='create-photo' element={<CreatePhoto />} />
-                <Route path='photos/:photoId/delete' />
               </Route>
 
               <Route path='photos/:photoId/details' element={<PhotoDetails />} />

@@ -16,6 +16,13 @@ export const PhotoDetails = () => {
 
     const [photo, setPhoto] = useState({});
 
+
+    const [liked, setLiked] = useState(false);
+
+    const handleClick = () => {
+        setLiked(!liked);
+    };
+
     useEffect(() => {
         service.getOne(photoId).then(data => {
             setPhoto(data);
@@ -46,7 +53,7 @@ export const PhotoDetails = () => {
                     <Link to={`/photos/${photo._id}/edit`} className="card-link me-2">
                         <BsPencil className="icon-lg" />
                     </Link>
-                    <Link to={`/photos/${photo._id}/delete`} className="card-link">
+                    <Link to={void (0)} className="card-link">
                         <BsTrash onClick={onDeleteClick} className="icon-lg" />
                     </Link>
                 </>)}
@@ -54,8 +61,14 @@ export const PhotoDetails = () => {
             <div className="card-body d-flex flex-column justify-content-center align-items-center">
                 <h2 className="card-title text-center title">{photo.title}</h2>
                 <img src={photo.imageUrl} alt={photo.title} className="image-margins" />
-                <FcLikePlaceholder className="icon-lg" />
-            </div>
+                <div onClick={handleClick}>
+                    {liked ? (
+                        <FcLike className="icon-lg" title="Like" />
+                    ) : (
+                        <FcLikePlaceholder className="icon-lg" title="Like" />
+                    )}
+                </div>
+            </div >
         </>
 
     );

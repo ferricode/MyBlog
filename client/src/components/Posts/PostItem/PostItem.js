@@ -47,7 +47,7 @@ export const PostItem = ({
                         <Link to={`/posts/${_id}/edit`} className="card-link me-2">
                             <BsPencil />
                         </Link>
-                        <Link to={`/posts/${_id}/delete`} className="card-link">
+                        <Link to={void (0)} className="card-link">
                             <BsTrash onClick={onDeleteClick} />
                         </Link>
                     </>)}

@@ -1,5 +1,7 @@
 import { useForm } from '../../hooks/useForm';
+import { useState } from 'react';
 import { usePhotoContext } from '../../contexts/PhotoContext';
+import { validatePhoto } from '../../utils/validations';
 
 export const CreatePhoto = () => {
     const { onCreatePhotoSubmit } = usePhotoContext();
@@ -7,6 +9,21 @@ export const CreatePhoto = () => {
         title: '',
         imageUrl: ''
     }, onCreatePhotoSubmit);
+
+    const [errors, setErrors] = useState({
+        title: "",
+        imageUrl: "",
+    });
+
+    const validate = () => {
+        const newErrors = validatePhoto(values);
+        setErrors(newErrors);
+        return Object.values(newErrors).every((error) => error === "");
+    };
+
+    const onBlurHandler = (event) => {
+        validate();
+    };
 
     return (
         <div className="col-md-10 col-lg-8 m-auto">
@@ -19,7 +36,9 @@ export const CreatePhoto = () => {
                     placeholder="Заглавие:"
                     value={values.title}
                     onChange={changeHandler}
+                    onBlur={onBlurHandler}
                 />
+                {errors.title && <p className="text-danger">{errors.title}</p>}
                 <textarea
                     row="10"
                     type="text"
@@ -28,9 +47,11 @@ export const CreatePhoto = () => {
                     placeholder="Линк към снимка...:"
                     value={values.imageUrl}
                     onChange={changeHandler}
+                    onBlur={onBlurHandler}
                 >
                 </textarea>
-                <input type="submit" className="form-control" value="Създай" />
+                {errors.imageUrl && <p className="text-danger">{errors.imageUrl}</p>}
+                <input type="submit" className="form-control" value="Създай" disabled={Object.values(errors).some((error) => error !== "")} />
             </form>
         </div >
     );

@@ -1,11 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams } from "react-router-dom";
 
 import { useForm } from '../../hooks/useForm';
 import { photoServiceFactory } from '../../services/photoService';
 import { usePhotoContext } from '../../contexts/PhotoContext';
 import { AuthContext } from "../../contexts/AuthContext";
-
+import { validatePhoto } from '../../utils/validations';
 
 export const EditPhoto = () => {
     const { token } = useContext(AuthContext);
@@ -20,7 +20,24 @@ export const EditPhoto = () => {
         imageUrl: ''
     }, onEditPhotoSubmit);
 
-    console.log(service.getOne(photoId));
+    const [isValid, setIsValid] = useState(true);
+
+    const [errors, setErrors] = useState({
+        title: "",
+        imageUrl: "",
+    });
+
+    const validate = () => {
+        const newErrors = validatePhoto(values);
+        setErrors(newErrors);
+        const isValid = Object.values(newErrors).every((error) => error === "");
+        setIsValid(isValid); // update isValid state variable
+    };
+
+
+    const onBlurHandler = (event) => {
+        validate();
+    };
     useEffect(() => {
         service.getOne(photoId)
             .then(result => {
@@ -38,8 +55,10 @@ export const EditPhoto = () => {
                     className="form-control"
                     placeholder="Заглавие:"
                     value={values.title}
+                    onBlur={onBlurHandler}
                     onChange={changeHandler}
                 />
+                {errors.title && <p className="text-danger">{errors.title}</p>}
                 <input
                     row="10"
                     type="text"
@@ -47,9 +66,11 @@ export const EditPhoto = () => {
                     className="form-control"
                     placeholder="Съдържание:"
                     value={values.imageUrl}
+                    onBlur={onBlurHandler}
                     onChange={changeHandler}
                 />
-                <input type="submit" className="form-control" value="Редактирай" />
+                {errors.imageUrl && <p className="text-danger">{errors.imageUrl}</p>}
+                <input type="submit" className="form-control" value="Редактирай" disabled={!isValid} />
             </form>
         </div >
     );

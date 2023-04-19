@@ -7,8 +7,7 @@
 
 ## MyBlog with React.js
 
-MyBlog is a simple blog application created with React.js, allowing users to create, edit, and delete posts and pictures separeted in two different catalogs. The application uses a custom API built with Node.js and MongoDB to store and manage the data.
-To get started right away, you don't need an account or API key. Just chose your endpoint and start testing the API.
+MyBlog is a simple blog application created with React.js, allowing users to create, edit, and delete posts and pictures separeted in two different catalogs. The application uses a custom API built with Node.js and stores data in json.
 
 ## Features
 - User authentication using JSON Web Tokens (JWT).
